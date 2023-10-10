@@ -28,7 +28,7 @@ const ProductIN = () => {
     const value = form.value;
     const newProduct = { ...product };
     newProduct[field] = value;
-    setProduct(newProduct);
+    setProduct(newProduct); 
     // console.log(form.value);
   };
 

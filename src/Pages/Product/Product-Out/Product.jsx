@@ -8,7 +8,7 @@ const Product = ({ product, filterProduct }) => {
       method: "DELETE",
     })
       .then((res) => res.json())
-      .then((data) => {
+      .then((data) => { 
         // console.log(data);
         if (data.acknowledged) {
           filterProduct(id);

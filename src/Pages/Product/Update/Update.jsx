@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import logo from "../../../assets/images/login/login.svg"
+import logo from "../../../assets/images/products/6.png";
 
 const Update = () => {
     const product = useLoaderData()
@@ -17,7 +17,7 @@ const Update = () => {
         },
         body:JSON.stringify(singleProduct)
        })
-       .then(res => res.json())
+       .then(res => res.json()) 
        .then(data => {
         console.log(data)
        
@@ -36,8 +36,8 @@ const Update = () => {
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content md:w-full mx-auto flex-col lg:flex-row-reverse">
-        <div className="text-center ">
-          <img className="w-[90%]" src={logo} alt="" />
+        <div className="text-start">
+          <img className="w-full" src={singleProduct.img} alt="" />
         </div>
         <div className="card flex-shrink-0 w-1/2 mx-auto max-w-sm shadow-2xl bg-base-100">
           <h1 className="text-4xl font-bold text-center">
