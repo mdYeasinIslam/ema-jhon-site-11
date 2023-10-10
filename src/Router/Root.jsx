@@ -12,6 +12,7 @@ import ProductIN from "../Pages/Product/ProductIN";
 import ExtraLayout from "../Layout/ExtraLayout";
 import DisplayProducts from "../Pages/Product/Product-Out/DisplayProcucts";
 import Update from "../Pages/Product/Update/Update";
+import CheckOut from "../Pages/Services/ChackOut/CheckOut";
 
 const Root = () => {
   const router = createBrowserRouter([
@@ -66,6 +67,12 @@ const Root = () => {
           loader:({params})=>fetch(`http://localhost:3000/product/${params.id}`)
         },
         {
+          path:'/checkOut/:id',
+          element:<CheckOut/>,
+          loader:({params})=>fetch(`http://localhost:3000/service/${params.id}`)
+        
+        },
+        {
           path: "/signUp",
           element: <SignUp />,
         },
@@ -73,6 +80,7 @@ const Root = () => {
           path: "/logIn",
           element: <LogIn />,
         },
+
       ],
     },
   ]);
