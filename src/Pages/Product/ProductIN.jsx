@@ -8,13 +8,16 @@ const ProductIN = () => {
   const formHandler = (e) => {
     e.preventDefault();
     // console.log(product);
-    fetch("http://localhost:3000/product", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(product),
-    })
+    fetch(
+      "https://genius-car-server-gs9xl9af4-mdyeasinislam.vercel.app/product",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(product),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data)
@@ -28,24 +31,24 @@ const ProductIN = () => {
     const value = form.value;
     const newProduct = { ...product };
     newProduct[field] = value;
-    setProduct(newProduct); 
+    setProduct(newProduct);
     // console.log(form.value);
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content md:w-full mx-auto flex-col lg:flex-row-reverse">
+    <div className="md:hero w-full min-h-screen bg-base-300 ">
+      <div className="md:hero-content  md:w-full  flex-col lg:flex-row-reverse">
         <div className="text-center ">
-          <img className="w-[60%] mx-auto" src={logo} alt="" />
+          <img className="  w-[60%] mx-auto" src={logo} alt="" />
         </div>
-        <div className="card flex-shrink-0 w-1/2 mx-auto max-w-sm shadow-2xl bg-base-100">
-          <h1 className="text-4xl font-bold text-center">
+        <div className="card flex-shrink-0 w-full md:w-1/2 mx-auto max-w-sm shadow-2xl bg-base-100">
+          <h1 className="text-xl md:text-4xl font-bold text-center">
             Add Product In your Site
           </h1>
           <form onSubmit={formHandler} className="card-body">
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Product-Name</span>
+                <span className="label-text  font-semibold">Product-Name</span>
               </label>
               <input
                 onChange={inputHandler}
@@ -58,7 +61,7 @@ const ProductIN = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Price</span>
+                <span className="label-text font-semibold">Price</span>
               </label>
               <input
                 onChange={inputHandler}
@@ -83,7 +86,6 @@ const ProductIN = () => {
                 className="input input-bordered"
               />
             </div>
-
             <div className="form-control mt-6">
               <button className="btn btn-primary">Add Product</button>
             </div>

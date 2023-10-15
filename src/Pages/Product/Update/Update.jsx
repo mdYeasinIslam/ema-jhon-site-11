@@ -1,38 +1,42 @@
 import React, { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import logo from "../../../assets/images/products/6.png";
+import { toast } from "react-toastify";
 
 const Update = () => {
-    const product = useLoaderData()
-    const [singleProduct,setSingleProduct] = useState(product)
-    console.log(product)
-    const navigate = useNavigate()
-    const formHandler = (e) => {
-        e.preventDefault();
-        // console.log(singleProduct);
-       fetch(`http://localhost:3000/product/${singleProduct._id}`,{
-        method:"PUT",
-        headers:{
-            'content-type' : "application/json"
+  const product = useLoaderData();
+  const [singleProduct, setSingleProduct] = useState(product);
+  console.log(product);
+  const navigate = useNavigate();
+  const formHandler = (e) => {
+    e.preventDefault();
+    // console.log(singleProduct);
+    fetch(
+      `https://genius-car-server-gs9xl9af4-mdyeasinislam.vercel.app/product/${singleProduct._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
         },
-        body:JSON.stringify(singleProduct)
-       })
-       .then(res => res.json()) 
-       .then(data => {
-        console.log(data)
-       
-       })
-        navigate('/product-out')
-      };
-      const inputHandler = (e) => {
-        const form = e.target;
-        const field = form.name;
-        const value = form.value;
-        const newProduct = { ...product };
-        newProduct[field] = value;
-        setSingleProduct(newProduct);
-        // console.log(form.value);
-      };
+        body: JSON.stringify(singleProduct),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+      toast('This product get an update by you')
+    navigate("/product-out");
+  };
+  const inputHandler = (e) => {
+    const form = e.target;
+    const field = form.name;
+    const value = form.value;
+    const newProduct = { ...product };
+    newProduct[field] = value;
+    setSingleProduct(newProduct);
+    // console.log(form.value);
+  };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content md:w-full mx-auto flex-col lg:flex-row-reverse">
@@ -46,7 +50,9 @@ const Update = () => {
           <form onSubmit={formHandler} className="card-body">
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-xl font-semibold">Product-Name</span>
+                <span className="label-text text-xl font-semibold">
+                  Product-Name
+                </span>
               </label>
               <input
                 onChange={inputHandler}
@@ -82,7 +88,6 @@ const Update = () => {
                 onChange={inputHandler}
                 type="url"
                 defaultValue={singleProduct.img}
-
                 placeholder="Product-Image URL (Optional)"
                 name="img"
                 className="input input-bordered"

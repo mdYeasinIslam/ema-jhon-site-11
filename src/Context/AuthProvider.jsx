@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
 export const AuthContext = createContext("");
 const auth = getAuth(app);
@@ -15,18 +15,22 @@ const AuthProvider = ({ children }) => {
     const logInAuth = (email,password) => {
         return signInWithEmailAndPassword(auth,email,password)
     }
+    const logOut =()=>{
+      localStorage.removeItem('jwt-token')
+      return signOut(auth)
+    }
     const googleAuth = () =>{
         return signInWithPopup(auth,google)
     }
     useEffect(()=>{
       const unSubscribe = onAuthStateChanged(auth,currentUser =>{
-        console.log(currentUser)
+        // console.log(currentUser)
         setUser(currentUser)
         setLoading(false)
       })
       return () => unSubscribe()
     },[])
-  const userInfo = { user,signUpAuth,logInAuth ,googleAuth};
+  const userInfo = { user,loading,signUpAuth,logInAuth ,logOut,googleAuth};
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );

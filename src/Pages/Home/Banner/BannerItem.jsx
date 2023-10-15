@@ -26,9 +26,9 @@ const BannerItem = ({slider}) => {
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             Voluptatibus error necessitati.......
           </p>
-          <div className="  md:top-16 lg:top-24 relative">
-            <button className="btn btn-sm md:btn-md btn-success">Success</button>
-            <button className="btn btn-sm md:btn-md btn-warning">Warning</button>
+          <div className="space-x-3 md:top-16 lg:top-24 relative">
+            <button className="btn btn-sm md:btn-md btn-success">Discover More</button>
+            <button className="btn btn-sm md:btn-md btn-warning">Latest Project</button>
           </div>
         </div>
       </div>

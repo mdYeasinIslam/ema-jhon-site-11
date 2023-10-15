@@ -1,0 +1,8 @@
+@media screen and (min-width:1023px) and (max-width:1180px) {
+.navIcon{
+    display: inline-flex;
+    gap:0.7rem !important;
+    font-size: 1.2rem !important;
+}
+    
+}

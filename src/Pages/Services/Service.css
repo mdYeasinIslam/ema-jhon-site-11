@@ -1,0 +1,7 @@
+@media screen and (min-width:1023px) and (max-width:1230px) {
+    .serviceItem{
+        display: grid;
+        width: 93%;
+    }
+    
+}

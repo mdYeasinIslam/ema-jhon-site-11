@@ -13,6 +13,8 @@ import ExtraLayout from "../Layout/ExtraLayout";
 import DisplayProducts from "../Pages/Product/Product-Out/DisplayProcucts";
 import Update from "../Pages/Product/Update/Update";
 import CheckOut from "../Pages/Services/ChackOut/CheckOut";
+import Orders from "../Pages/Order/Orders";
+import PrivateRoot from "./PrivateRoot";
 
 const Root = () => {
   const router = createBrowserRouter([
@@ -62,15 +64,32 @@ const Root = () => {
           element: <DisplayProducts />,
         },
         {
-          path:'/update/:id',
-          element:<Update/>,
-          loader:({params})=>fetch(`http://localhost:3000/product/${params.id}`)
+          path: "/update/:id",
+          element: <Update />,
+          loader: ({ params }) =>
+            fetch(
+              `https://genius-car-server-gs9xl9af4-mdyeasinislam.vercel.app/product/${params.id}`
+            ),
         },
         {
-          path:'/checkOut/:id',
-          element:<CheckOut/>,
-          loader:({params})=>fetch(`http://localhost:3000/service/${params.id}`)
-        
+          path: "/checkOut/:id",
+          element: (
+            <PrivateRoot>
+              <CheckOut />
+            </PrivateRoot>
+          ),
+          loader: ({ params }) =>
+            fetch(
+              `https://genius-car-server-gs9xl9af4-mdyeasinislam.vercel.app/service/${params.id}`
+            ),
+        },
+        {
+          path: "/order",
+          element: (
+            <PrivateRoot>
+              <Orders />
+            </PrivateRoot>
+          ),
         },
         {
           path: "/signUp",
@@ -80,7 +99,6 @@ const Root = () => {
           path: "/logIn",
           element: <LogIn />,
         },
-
       ],
     },
   ]);
