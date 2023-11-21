@@ -6,7 +6,7 @@ const ServicesItem = ({ service }) => {
   return (
     <div className="card serviceItem card-compact md:w-96 mx-auto bg-base-100 shadow-2xl">
       <figure className="w-full">
-        <img
+        <img 
           src={img}
           alt="Shoes"
           className="w-full"

@@ -73,7 +73,7 @@ const Root = () => {
         },
         {
           path: "/checkOut/:id",
-          element: (
+          element: ( 
             <PrivateRoot>
               <CheckOut />
             </PrivateRoot>
